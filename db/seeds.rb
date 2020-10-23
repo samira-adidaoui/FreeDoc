@@ -8,8 +8,17 @@
 require 'faker'
 
 10.times do
-  d = Doctor.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-  p = Patient.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-  a = Appointment.create!(doctor: d, patient: p)
+  d = Doctor.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
 end
 
+10.times do
+  p = Patient.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+end
+
+10.times do
+  c = City.create(name_city: Faker::Address.city)
+end
+
+10.times do
+  a = Appointment.create(doctor: Doctor.all.sample, patient: Patient.all.sample, city: City.all.sample, date: Faker::Date.backward(days: 15))
+end

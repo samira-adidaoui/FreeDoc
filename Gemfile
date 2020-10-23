@@ -63,3 +63,4 @@ end
 gem "execjs"
 gem "therubyracer"
 gem "faker"
+gem "table_print"
